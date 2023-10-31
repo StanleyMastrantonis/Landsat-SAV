@@ -14,6 +14,7 @@ import pickle
 
 import ee
 import rasterio
+import rioxarray as rxr
 import sankee
 import fiona
 from osgeo import gdal, osr, gdalconst
@@ -47,10 +48,13 @@ from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from matplotlib.offsetbox import AnchoredText
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap, Normalize
 from matplotlib_scalebar.scalebar import ScaleBar
+from matplotlib.lines import Line2D
 
 
 from sklearn import ensemble
 from sklearn.cluster import DBSCAN, AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, linkage
+
 
 def getFactorImg(factorNames: List[str], image: ee.Image) -> ee.Image:
     """
